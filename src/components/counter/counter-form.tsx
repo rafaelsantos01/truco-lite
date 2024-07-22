@@ -2,7 +2,11 @@
 import { useState } from "react";
 import { Button } from "../ui/button";
 
-export default function CounterForm() {
+interface CounterFormProps {
+  team: string;
+}
+
+export default function CounterForm({ team }: CounterFormProps) {
   const [counter, setCounter] = useState(0);
 
   function handleIncrement(points: number) {
@@ -27,19 +31,21 @@ export default function CounterForm() {
     <div className="space-y-4 max-w-32">
       <div className="flex flex-col items-center text-white  text-center">
         <p className="text-8xl ">{counter}</p>
-        <p className="font-bold">Time</p>
+        <p className="font-bold">{team}</p>
       </div>
 
       <div className="space-x-2 flex justify-between">
         <div className="space-y-2 ">
           <Button
-            className="max-w-14 p-7 rounded-2xl "
+            variant={"outline"}
+            className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleIncrement(3)}
           >
             +3
           </Button>
           <Button
-            className="max-w-14 p-7 rounded-2xl "
+            variant={"outline"}
+            className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleDecrement(3)}
           >
             -3
@@ -48,13 +54,15 @@ export default function CounterForm() {
 
         <div className="space-y-2">
           <Button
-            className="max-w-14 p-7 rounded-2xl "
+            variant={"outline"}
+            className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleIncrement(1)}
           >
             +1
           </Button>
           <Button
-            className="max-w-14 p-7 rounded-2xl "
+            variant={"outline"}
+            className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleDecrement(1)}
           >
             -1
@@ -63,7 +71,11 @@ export default function CounterForm() {
       </div>
 
       <div className="flex">
-        <Button className="p-7 rounded-2xl w-full " onClick={handleReset}>
+        <Button
+          className="p-7 rounded-2xl w-full text-black"
+          variant={"outline"}
+          onClick={handleReset}
+        >
           Zerar
         </Button>
       </div>

@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { QRCodeCanvas } from "qrcode.react";
 import { useState } from "react";
@@ -16,16 +17,16 @@ export default function DonationForm() {
     <div className="flex flex-col items-center justify-center space-y-4">
       <div className="flex items-center justify-center">
         <QRCodeCanvas
-          value="https://reactjs.org/"
-          bgColor="#fa7304"
-          fgColor="#0a0a0a"
+          value={linkDonation}
+          fgColor="hsl(222.2, 47.4%, 11.2%)"
           level="L"
-          size={200}
+          size={240}
         />
       </div>
 
       <Button
-        className="font-mada disabled:bg-transparent "
+        variant={"outline"}
+        className=" w-full"
         onClick={copyQRCode}
         disabled={isDisabled}
       >

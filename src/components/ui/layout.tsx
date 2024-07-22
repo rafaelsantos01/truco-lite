@@ -16,7 +16,7 @@ export const Layout = ({ className, children }: LayoutProps) => {
       <Header />
       <main
         className={cn(
-          "flex-grow flex flex-col items-center justify-center p-24 bg-orange-500",
+          "flex-grow flex flex-col items-center justify-center p-24 bg-primary",
           className
         )}
       >

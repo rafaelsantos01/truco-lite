@@ -17,11 +17,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Description } from "@radix-ui/react-dialog";
 import { Text } from "../ui/text";
 import { useRouter } from "next/navigation";
+import createParty from "@/action/create-party";
 
 export default function HomeComponent() {
   const [isDialog, setIsDialog] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const router = useRouter();
 
   const {
     register,
@@ -36,7 +36,7 @@ export default function HomeComponent() {
   async function onSubmit() {
     setIsLoaded(true);
     const data = getValues();
-    router.push("/start");
+    await createParty(data);
   }
 
   return (
@@ -53,7 +53,7 @@ export default function HomeComponent() {
       </div>
 
       <Dialog open={isDialog} onOpenChange={setIsDialog}>
-        <DialogContent className="">
+        <DialogContent className=" shadow-inner">
           <DialogHeader>
             <DialogTitle className="flex items-center justify-center font-bold text-2xl">
               Times

@@ -1,14 +1,28 @@
 import StartForm from "@/components/start/start-form";
 import { Layout } from "@/components/ui/layout";
 import { Title } from "@/components/ui/title";
+import { CookieNames } from "@/types/cookies-name";
+import { cookies } from "next/headers";
 
-export default function PageStart() {
+export default async function PageStart() {
+  const teamOne = cookies().get(CookieNames.TEAM_ONE);
+  const teamTwo = cookies().get(CookieNames.TEAM_TWO);
+
+  if (teamOne?.value && teamTwo?.value) {
+    return (
+      <Layout>
+        <div className="flex flex-col space-y-11 text-white justify-center items-center">
+          <Title>Contador De truco</Title>
+          <StartForm teamOne={teamOne.value} teamTwo={teamTwo.value} />
+        </div>
+      </Layout>
+    );
+  }
+
+  //TODO: Pagina de error
   return (
     <Layout>
-      <div className="flex flex-col space-y-11 text-white justify-center items-center">
-        <Title>Contador De truco</Title>
-        <StartForm />
-      </div>
+      <p>F</p>
     </Layout>
   );
 }
