@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 interface CounterFormProps {
   team: string;
@@ -8,11 +9,16 @@ interface CounterFormProps {
 
 export default function CounterForm({ team }: CounterFormProps) {
   const [counter, setCounter] = useState(0);
+  const router = useRouter();
 
   function handleIncrement(points: number) {
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
-      return newCounter > 12 ? 12 : newCounter;
+      if (newCounter >= 12) {
+        router.push(`/winners/${team}`);
+        return 12;
+      }
+      return newCounter;
     });
   }
 
