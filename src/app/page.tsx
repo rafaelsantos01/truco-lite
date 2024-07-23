@@ -1,11 +1,11 @@
 import Copas from "@/components/icons/copas";
-import Espadas from "@/components/icons/estapdas";
+
 import Ouros from "@/components/icons/ouros";
 import Paus from "@/components/icons/paus";
 import { Title } from "@/components/ui/title";
-import homeComponent from "@/components/home/home-component";
 import HomeComponent from "@/components/home/home-component";
 import { Layout } from "@/components/ui/layout";
+import Espadas from "@/components/icons/espadas";
 
 export default async function Home() {
   return (
@@ -18,7 +18,7 @@ export default async function Home() {
           <Espadas />
         </section>
 
-        <section className="flex flex-col items-center justify-center text-white">
+        <section className="flex flex-col items-center justify-center text-secondary">
           <Title>CONTADOR</Title>
           <Title>DE TRUCO</Title>
         </section>

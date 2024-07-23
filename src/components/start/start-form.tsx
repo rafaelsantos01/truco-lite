@@ -15,7 +15,7 @@ export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
     await CancelPartyRedirect();
   }
   return (
-    <section>
+    <section className="">
       <div className="flex space-x-10 ">
         <CounterForm team={teamOne} />
         <Separator orientation="vertical" className="h-auto bg-primary" />
