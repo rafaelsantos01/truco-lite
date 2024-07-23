@@ -43,6 +43,7 @@ export default function HomeComponent() {
     <section>
       <div className="flex items-center justify-center">
         <Button
+          className="bg-secondary"
           variant={"outline"}
           onClick={() => {
             setIsDialog(true);
@@ -53,7 +54,7 @@ export default function HomeComponent() {
       </div>
 
       <Dialog open={isDialog} onOpenChange={setIsDialog}>
-        <DialogContent className=" shadow-inner">
+        <DialogContent className="bg-secondary shadow-inner">
           <DialogHeader>
             <DialogTitle className="flex items-center justify-center font-bold text-2xl">
               Times
@@ -64,9 +65,9 @@ export default function HomeComponent() {
               <div className="space-y-4">
                 <div className="space-y-1">
                   <Label className="flex" htmlFor="time1">
-                    Time 1
+                    Eles
                   </Label>
-                  <Input placeholder="Azul" {...register("teamOne")} />
+                  <Input placeholder="Eles" {...register("teamOne")} />
                   {errors.teamOne && (
                     <Text weight={"medium"} size={"base"} variant={"danger"}>
                       {errors.teamOne?.message}
@@ -76,9 +77,9 @@ export default function HomeComponent() {
 
                 <div className="space-y-1">
                   <Label className="flex" htmlFor="time2">
-                    Time 2
+                    Nós
                   </Label>
-                  <Input placeholder="Rosa" {...register("teamTwo")} />
+                  <Input placeholder="Nós" {...register("teamTwo")} />
                   {errors.teamOne && (
                     <Text weight={"medium"} size={"base"} variant={"danger"}>
                       {errors.teamTwo?.message}

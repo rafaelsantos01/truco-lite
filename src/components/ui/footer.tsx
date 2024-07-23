@@ -13,11 +13,11 @@ export const Footer = ({ className }: { className?: ClassValue }) => {
     >
       <Link
         href="/donation"
-        className="underline text-white flex items-center justify-center"
+        className="underline text-secondary flex items-center justify-center"
       >
         Me pague um café
       </Link>
-      <p className=" flex items-center justify-center text-white">
+      <p className=" flex items-center justify-center text-secondary">
         © 2024 - Developed by Rafael Santos
       </p>
     </div>

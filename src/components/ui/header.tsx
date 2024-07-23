@@ -6,10 +6,6 @@ import { useState } from "react";
 import Link from "next/link";
 import MenuClose from "../icons/menu";
 import { Button } from "./button";
-import Paus from "../icons/paus";
-import Copas from "../icons/copas";
-import Ouros from "../icons/ouros";
-import Espadas from "../icons/estapdas";
 import Image from "next/image";
 import logo from "../../../public/truco.png";
 
@@ -22,9 +18,10 @@ export const Header = () => {
 
   return (
     <header className="flex justify-between items-center p-1 bg-primary">
-      <div className="text-white text-2xl">
+      <Link href="/" className="text-white  text-2xl">
         <Image src={logo} alt="logo" width={65} height={65} />
-      </div>
+      </Link>
+
       <Button
         variant={"default"}
         className="text-white text-2xl "
@@ -34,7 +31,7 @@ export const Header = () => {
       </Button>
       <nav
         className={cn(
-          "absolute top-16 left-0 w-full bg-primary flex flex-col items-center",
+          "absolute top-16 left-0 w-full bg-primary  flex flex-col items-center",
           { hidden: !menuOpen }
         )}
       >
