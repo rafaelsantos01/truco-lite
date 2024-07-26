@@ -15,7 +15,7 @@ export default function CounterForm({ team }: CounterFormProps) {
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
       if (newCounter >= 12) {
-        router.push(`/winners/${team}`);
+        router.push(`/winners?team=${team}`);
         return 12;
       }
       return newCounter;

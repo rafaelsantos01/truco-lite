@@ -12,7 +12,7 @@ interface WinnersFormProps {
 
 export default function WinnersForm({ team }: WinnersFormProps) {
   const playSound = () => {
-    const audio = new Audio("/pato.mp3");
+    const audio = new Audio("/mp3/pato.mp3");
     audio.play();
   };
 
@@ -22,7 +22,7 @@ export default function WinnersForm({ team }: WinnersFormProps) {
         <Button onClick={playSound} className="min-h-44">
           <div className="">
             <Image
-              src="/patoSemFundo.png"
+              src="/images/patoSemFundo.png"
               alt="pato"
               width={200}
               height={200}
