@@ -7,7 +7,7 @@ export const Footer = ({ className }: { className?: ClassValue }) => {
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 grid place-content-center px-4 py-4 ",
+        "fixed bottom-0 left-0 right-0 grid place-content-center px-4 py-4 bg-primary",
         className
       )}
     >
@@ -17,7 +17,7 @@ export const Footer = ({ className }: { className?: ClassValue }) => {
       >
         Me pague um café
       </Link>
-      <p className=" flex items-center justify-center text-secondary">
+      <p className="flex items-center justify-center text-secondary">
         © 2024 - Developed by Rafael Santos
       </p>
     </div>

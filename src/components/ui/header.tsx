@@ -7,7 +7,7 @@ import Link from "next/link";
 import MenuClose from "../icons/menu";
 import { Button } from "./button";
 import Image from "next/image";
-import logo from "../../../public/truco.png";
+import logo from "../../../public/images/truco.png";
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,21 +17,21 @@ export const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center p-1 bg-primary">
-      <Link href="/" className="text-white  text-2xl">
+    <header className="fixed top-0 left-0 w-full flex justify-between items-center p-1 bg-primary z-50">
+      <Link href="/" className="text-white text-2xl">
         <Image src={logo} alt="logo" width={65} height={65} />
       </Link>
 
       <Button
         variant={"default"}
-        className="text-white text-2xl "
+        className="text-white text-2xl"
         onClick={toggleMenu}
       >
         <MenuClose />
       </Button>
       <nav
         className={cn(
-          "absolute top-16 left-0 w-full bg-primary  flex flex-col items-center",
+          "absolute top-16 left-0 w-full bg-primary flex flex-col items-center",
           { hidden: !menuOpen }
         )}
       >

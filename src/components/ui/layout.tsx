@@ -12,11 +12,11 @@ type LayoutProps = {
 
 export const Layout = ({ className, children }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen bg-primary">
+    <div className="min-h-screen flex flex-col">
       <Header />
       <main
         className={cn(
-          "flex-grow flex flex-col items-center justify-center px-24 ",
+          "flex-grow flex flex-col items-center justify-center px-24 bg-primary",
           className
         )}
       >
