@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full flex justify-between items-center p-1 bg-primary z-50">
+    <header className="top-0 left-0 w-full flex justify-between items-center bg-primary">
       <Link href="/" className="text-white text-2xl">
         <Image src={logo} alt="logo" width={65} height={65} />
       </Link>
@@ -38,9 +38,9 @@ export const Header = () => {
         <Link href="/" className="text-white p-4">
           Inicio
         </Link>
-        <Link href="/donation" className="text-white p-4">
+        {/* <Link href="/donation" className="text-white p-4">
           Doação
-        </Link>
+        </Link> */}
       </nav>
     </header>
   );
