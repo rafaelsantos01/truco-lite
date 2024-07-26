@@ -1,6 +1,5 @@
 "use client";
 
-import Trophy from "@/components/ui/trophy";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,15 +16,15 @@ export default function WinnersForm({ team }: WinnersFormProps) {
   };
 
   return (
-    <section className="space-y-2">
+    <section>
       <div className="flex flex-col items-center justify-center ">
         <Button onClick={playSound} className="min-h-44">
           <div className="">
             <Image
               src="/images/patoSemFundo.png"
               alt="pato"
-              width={200}
-              height={200}
+              width={180}
+              height={180}
             />
           </div>
         </Button>
@@ -36,15 +35,15 @@ export default function WinnersForm({ team }: WinnersFormProps) {
         </div>
       </div>
 
-      <div>
-        <Trophy />
+      <div className="flex items-center justify-center">
+        <Image src="/images/trofeu.png" alt="pato" width={180} height={180} />
       </div>
 
-      <div className=" flex space-x-4">
-        <Button className="w-full h-12" variant={"secondary"}>
+      <div className="flex space-x-6">
+        <Button className="w-36 h-12" variant={"secondary"}>
           <Link href="/start">Jogar Novamente</Link>
         </Button>
-        <Button className="w-full h-12" variant={"secondary"}>
+        <Button className="w-36 h-12" variant={"secondary"}>
           <Link href="/">Novo Jogo</Link>
         </Button>
       </div>
