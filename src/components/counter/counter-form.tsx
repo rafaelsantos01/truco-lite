@@ -1,24 +1,45 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { UpdateScore } from "@/action/update-coreBoard";
+import { toast } from "../ui/use-toast";
 interface CounterFormProps {
   team: string;
+  type: string;
 }
 
-export default function CounterForm({ team }: CounterFormProps) {
+export default function CounterForm({ team, type }: CounterFormProps) {
   const [counter, setCounter] = useState(0);
+  const router = useRouter();
 
   function handleIncrement(points: number) {
     speak(points, true);
+    updateCounter(points);
+  }
+
+  async function updateCounter(points: number) {
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
       if (newCounter >= 12) {
+        handleWinCondition();
         window.speechSynthesis.cancel();
-        redirect(`/winners?team=${team}`);
       }
       return newCounter;
     });
+  }
+
+  async function handleWinCondition() {
+    try {
+      await UpdateScore(type);
+      router.push(`/winners?team=${team}`);
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: "Erro ao atualizar placar",
+        variant: "destructive",
+      });
+    }
   }
 
   function handleDecrement(points: number) {
@@ -37,23 +58,30 @@ export default function CounterForm({ team }: CounterFormProps) {
   async function speak(qty: number, increment: boolean) {
     window.speechSynthesis.cancel();
 
-    let pontos = "pontos";
-    if (qty === 1) {
-      pontos = "ponto";
+    let pontos = "ponto";
+    if (qty > 1) {
+      pontos = "pontos";
     }
 
-    let text = "Foi marcado";
+    let text = null;
 
     if (increment === true) {
       text = `Mais ${qty.toString()} ${pontos} para o time ${team}`;
     } else {
       text = `${qty.toString()} ${pontos} removidos do time ${team}`;
     }
-    text = `, ${text} agora o time tem ${counter + qty} ${pontos}`;
+
+    pontos = "ponto";
+    if (counter > 1) {
+      pontos = "pontos";
+    }
+
+    text = ` ${text} agora o time tem ${counter + qty} ${pontos}`;
 
     const utterance = new SpeechSynthesisUtterance(text);
 
-    utterance.voice = window.speechSynthesis.getVoices()[0];
+    utterance.lang = "Google português do Brasil pt-BR";
+
     return window.speechSynthesis.speak(utterance);
   }
 
