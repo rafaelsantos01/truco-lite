@@ -5,6 +5,8 @@ import CounterForm from "../counter/counter-form";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import Scoreboard from "./scoreboard";
+import { useEffect } from "react";
+import speak from "@/utils/message-six-points";
 
 interface CookiesType {
   name: string;
@@ -21,6 +23,7 @@ export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
   async function cancelParty() {
     await CancelPartyRedirect();
   }
+
   return (
     <section className="">
       {teamOne && teamTwo && <Scoreboard teamOne={teamOne} teamTwo={teamTwo} />}

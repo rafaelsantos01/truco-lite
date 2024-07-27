@@ -9,6 +9,14 @@ interface TeamProps {
 }
 
 export default function Scoreboard({ teamOne, teamTwo }: TeamProps) {
+  function hasThreePointDifference(score1: number, score2: number): boolean {
+    return Math.abs(score1 - score2) >= 3;
+  }
+  const isThreePointDifference = hasThreePointDifference(
+    teamOne.score,
+    teamTwo.score
+  );
+
   return (
     <section className="mb-2 px-1 py-0   rounded-lg shadow-inner ">
       <div className="flex justify-between items-center mb-2">
