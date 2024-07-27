@@ -13,7 +13,10 @@ export default async function PageStart() {
       <Layout>
         <div className="flex flex-col space-y-2 text-white justify-center items-center">
           <Title>Contador De truco</Title>
-          <StartForm teamOne={teamOne.value} teamTwo={teamTwo.value} />
+          <StartForm
+            teamOne={JSON.parse(teamOne.value)}
+            teamTwo={JSON.parse(teamTwo.value)}
+          />
         </div>
       </Layout>
     );
