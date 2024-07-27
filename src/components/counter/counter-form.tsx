@@ -79,6 +79,7 @@ export default function CounterForm({ team, type }: CounterFormProps) {
     text = ` ${text} agora o time tem ${counter + qty} ${pontos}`;
 
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "pt-BR";
 
     utterance.lang = "Google português do Brasil pt-BR";
 
