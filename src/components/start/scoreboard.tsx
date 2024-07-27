@@ -10,7 +10,7 @@ interface TeamProps {
 
 export default function Scoreboard({ teamOne, teamTwo }: TeamProps) {
   return (
-    <section className="mb-2 py-4 px-1  rounded-lg shadow-lg">
+    <section className="mb-2 px-1 py-0   rounded-lg shadow-inner ">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center space-x-2">
           <p className="text-xl font-bold text-blue-600">{teamOne.score}</p>

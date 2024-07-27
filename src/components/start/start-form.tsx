@@ -24,8 +24,8 @@ export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
   return (
     <section className="">
       {teamOne && teamTwo && <Scoreboard teamOne={teamOne} teamTwo={teamTwo} />}
-
-      <div className="flex space-x-10 ">
+      <Separator orientation="horizontal" className="" />
+      <div className="flex space-x-10 mt-4">
         <CounterForm team={teamOne.name} type={teamOne.type} />
         <Separator orientation="vertical" className="h-auto bg-primary" />
         <CounterForm team={teamTwo.name} type={teamTwo.type} />

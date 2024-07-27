@@ -11,8 +11,7 @@ export default async function PageStart() {
   if (teamOne?.value && teamTwo?.value) {
     return (
       <Layout>
-        <div className="flex flex-col space-y-2 text-white justify-center items-center">
-          <Title>Contador De truco</Title>
+        <div className="flex flex-col  text-white justify-center items-center">
           <StartForm
             teamOne={JSON.parse(teamOne.value)}
             teamTwo={JSON.parse(teamTwo.value)}

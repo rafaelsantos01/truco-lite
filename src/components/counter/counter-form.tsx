@@ -58,24 +58,30 @@ export default function CounterForm({ team, type }: CounterFormProps) {
   async function speak(qty: number, increment: boolean) {
     window.speechSynthesis.cancel();
 
-    let pontos = "pontos";
-    if (qty === 1) {
-      pontos = "ponto";
+    let pontos = "ponto";
+    if (qty > 1) {
+      pontos = "pontos";
     }
 
-    let text = "Foi marcado";
+    let text = null;
 
     if (increment === true) {
       text = `Mais ${qty.toString()} ${pontos} para o time ${team}`;
     } else {
       text = `${qty.toString()} ${pontos} removidos do time ${team}`;
     }
-    text = `, ${text} agora o time tem ${counter + qty} ${pontos}`;
+
+    pontos = "ponto";
+    if (counter > 1) {
+      pontos = "pontos";
+    }
+
+    text = ` ${text} agora o time tem ${counter + qty} ${pontos}`;
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "pt-BR";
 
-    utterance.voice = window.speechSynthesis.getVoices()[1];
+    utterance.lang = "Google português do Brasil pt-BR";
+
     return window.speechSynthesis.speak(utterance);
   }
 
