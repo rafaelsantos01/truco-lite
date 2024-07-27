@@ -16,7 +16,6 @@ import { createTeam, type CreateTeam } from "@/schemas/create-team";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Description } from "@radix-ui/react-dialog";
 import { Text } from "../ui/text";
-import { useRouter } from "next/navigation";
 import createParty from "@/action/create-party";
 
 export default function HomeComponent() {
@@ -87,11 +86,11 @@ export default function HomeComponent() {
                   )}
                 </div>
               </div>
-              <div className="w-full flex items-center justify-between">
+              <div className="w-full flex flex-col items-center justify-between">
                 <Button
-                  className="min-w-40 p-6"
+                  className="w-full p-6"
                   type="submit"
-                  disabled={isLoaded}
+                  disabled={isLoaded || !isValid}
                 >
                   Start
                 </Button>
@@ -99,7 +98,7 @@ export default function HomeComponent() {
                   <Button
                     disabled={isLoaded}
                     className="min-w-40 p-6 "
-                    variant={"destructive"}
+                    variant={"link"}
                     onClick={() => {
                       setIsDialog(false);
                     }}
