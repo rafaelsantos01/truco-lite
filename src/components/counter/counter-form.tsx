@@ -1,23 +1,21 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
-import { useSpeechContext } from "@speechly/react-client";
+import { redirect } from "next/navigation";
 interface CounterFormProps {
   team: string;
 }
 
 export default function CounterForm({ team }: CounterFormProps) {
   const [counter, setCounter] = useState(0);
-  const router = useRouter();
 
   function handleIncrement(points: number) {
     speak(points, true);
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
       if (newCounter >= 12) {
-        router.push(`/winners?team=${team}`);
-        return 12;
+        window.speechSynthesis.cancel();
+        redirect(`/winners?team=${team}`);
       }
       return newCounter;
     });
@@ -32,10 +30,13 @@ export default function CounterForm({ team }: CounterFormProps) {
   }
 
   function handleReset() {
+    window.speechSynthesis.cancel();
     setCounter(0);
   }
 
   async function speak(qty: number, increment: boolean) {
+    window.speechSynthesis.cancel();
+
     let pontos = "pontos";
     if (qty === 1) {
       pontos = "ponto";
@@ -44,10 +45,11 @@ export default function CounterForm({ team }: CounterFormProps) {
     let text = "Foi marcado";
 
     if (increment === true) {
-      text = `${qty.toString()} ${pontos} para o time ${team}`;
+      text = `Mais ${qty.toString()} ${pontos} para o time ${team}`;
     } else {
       text = `${qty.toString()} ${pontos} removidos do time ${team}`;
     }
+    text = `, ${text} agora o time tem ${counter + qty} ${pontos}`;
 
     const utterance = new SpeechSynthesisUtterance(text);
 
@@ -64,6 +66,7 @@ export default function CounterForm({ team }: CounterFormProps) {
       <div className="space-x-2 flex justify-between">
         <div className="space-y-2 ">
           <Button
+            disabled={counter >= 12}
             variant={"outline"}
             className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleIncrement(3)}
@@ -71,6 +74,7 @@ export default function CounterForm({ team }: CounterFormProps) {
             +3
           </Button>
           <Button
+            disabled={counter >= 12}
             variant={"outline"}
             className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleDecrement(3)}
@@ -81,6 +85,7 @@ export default function CounterForm({ team }: CounterFormProps) {
 
         <div className="space-y-2">
           <Button
+            disabled={counter >= 12}
             variant={"outline"}
             className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleIncrement(1)}
@@ -88,6 +93,7 @@ export default function CounterForm({ team }: CounterFormProps) {
             +1
           </Button>
           <Button
+            disabled={counter >= 12}
             variant={"outline"}
             className="max-w-14 p-7 rounded-2xl text-black"
             onClick={() => handleDecrement(1)}
