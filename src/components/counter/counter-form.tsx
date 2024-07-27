@@ -1,24 +1,45 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { UpdateScore } from "@/action/update-coreBoard";
+import { toast } from "../ui/use-toast";
 interface CounterFormProps {
   team: string;
+  type: string;
 }
 
-export default function CounterForm({ team }: CounterFormProps) {
+export default function CounterForm({ team, type }: CounterFormProps) {
   const [counter, setCounter] = useState(0);
+  const router = useRouter();
 
   function handleIncrement(points: number) {
     speak(points, true);
+    updateCounter(points);
+  }
+
+  async function updateCounter(points: number) {
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
       if (newCounter >= 12) {
+        handleWinCondition();
         window.speechSynthesis.cancel();
-        redirect(`/winners?team=${team}`);
       }
       return newCounter;
     });
+  }
+
+  async function handleWinCondition() {
+    try {
+      await UpdateScore(type);
+      router.push(`/winners?team=${team}`);
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: "Erro ao atualizar placar",
+        variant: "destructive",
+      });
+    }
   }
 
   function handleDecrement(points: number) {

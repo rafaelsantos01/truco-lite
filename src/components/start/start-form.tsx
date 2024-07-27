@@ -4,10 +4,17 @@ import { CancelPartyRedirect } from "@/action/cancel-party";
 import CounterForm from "../counter/counter-form";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import Scoreboard from "./scoreboard";
+
+interface CookiesType {
+  name: string;
+  score: number;
+  type: string;
+}
 
 interface StartFormProps {
-  teamOne: string;
-  teamTwo: string;
+  teamOne: CookiesType;
+  teamTwo: CookiesType;
 }
 
 export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
@@ -16,10 +23,12 @@ export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
   }
   return (
     <section className="">
+      {teamOne && teamTwo && <Scoreboard teamOne={teamOne} teamTwo={teamTwo} />}
+
       <div className="flex space-x-10 ">
-        <CounterForm team={teamOne} />
+        <CounterForm team={teamOne.name} type={teamOne.type} />
         <Separator orientation="vertical" className="h-auto bg-primary" />
-        <CounterForm team={teamTwo} />
+        <CounterForm team={teamTwo.name} type={teamTwo.type} />
       </div>
       <div className="w-full flex items-center justify-center mt-4">
         <Button

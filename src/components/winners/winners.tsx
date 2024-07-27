@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Title } from "../ui/title";
 import Confetti from "react-confetti";
 import { useWindowSize } from "@uidotdev/usehooks";
+import clearParty from "@/action/clear-party";
 
 interface WinnersFormProps {
   team: string;
@@ -46,8 +47,14 @@ export default function WinnersForm({ team }: WinnersFormProps) {
         <Button className="w-36 h-12" variant={"secondary"}>
           <Link href="/start">Jogar Novamente</Link>
         </Button>
-        <Button className="w-36 h-12" variant={"secondary"}>
-          <Link href="/">Novo Jogo</Link>
+        <Button
+          className="w-36 h-12"
+          variant={"secondary"}
+          onClick={() => {
+            clearParty();
+          }}
+        >
+          Novo Jogo
         </Button>
       </div>
       <Confetti width={width || 0} height={height || 0} initialVelocityX={10} />
