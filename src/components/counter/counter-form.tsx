@@ -20,7 +20,7 @@ export default function CounterForm({ team }: CounterFormProps) {
       return newCounter;
     });
   }
-
+  ("a");
   function handleDecrement(points: number) {
     speak(points, false);
     setCounter((prevCounter) => {
