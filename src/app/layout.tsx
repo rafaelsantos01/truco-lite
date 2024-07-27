@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/truco.svg" />
+        <link rel="icon" type="image/svg+xml" href="/truco-16.png" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>

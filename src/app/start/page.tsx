@@ -11,7 +11,7 @@ export default async function PageStart() {
   if (teamOne?.value && teamTwo?.value) {
     return (
       <Layout>
-        <div className="flex flex-col space-y-11 text-white justify-center items-center">
+        <div className="flex flex-col space-y-2 text-white justify-center items-center">
           <Title>Contador De truco</Title>
           <StartForm teamOne={teamOne.value} teamTwo={teamTwo.value} />
         </div>
