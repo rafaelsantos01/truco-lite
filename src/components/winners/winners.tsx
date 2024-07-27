@@ -4,12 +4,15 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Title } from "../ui/title";
+import Confetti from "react-confetti";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 interface WinnersFormProps {
   team: string;
 }
 
 export default function WinnersForm({ team }: WinnersFormProps) {
+  const { width, height } = useWindowSize();
   const playSound = () => {
     const audio = new Audio("/mp3/pato.mp3");
     audio.play();
@@ -47,6 +50,7 @@ export default function WinnersForm({ team }: WinnersFormProps) {
           <Link href="/">Novo Jogo</Link>
         </Button>
       </div>
+      <Confetti width={width || 0} height={height || 0} initialVelocityX={10} />
     </section>
   );
 }

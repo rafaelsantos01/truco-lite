@@ -12,7 +12,7 @@ export const Footer = ({ className }: { className?: ClassValue }) => {
       >
         Me pague um café
       </Link> */}
-      <p className="flex items-center justify-center text-secondary">
+      <p className="flex items-center justify-center text-secondary text-xs ">
         © 2024 - Developed by Rafael Santos
       </p>
     </div>
