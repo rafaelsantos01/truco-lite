@@ -1,15 +1,18 @@
 ## Truco Lite
 
- <p align="center">
-  <img src="https://truco.rafasantos.dev.br/images/capa.png" width="350px" alt="capa"/>
-</p>
-
- <p align="center">
-  <img src="https://truco.rafasantos.dev.br/images/jogo.png" width="350px" alt="capa"/>
-</p>
- <p align="center">
-  <img src="https://truco.rafasantos.dev.br/images/vencedor.png" width="350px" alt="capa"/>
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://truco.rafasantos.dev.br/images/capa.png" width="300px" alt="capa"/>
+    </td>
+    <td align="center">
+      <img src="https://truco.rafasantos.dev.br/images/jogo.png" width="300px" alt="capa"/>
+    </td>
+    <td align="center">
+      <img src="https://truco.rafasantos.dev.br/images/vencedor.png" width="300px" alt="capa"/>
+    </td>
+  </tr>
+</table>
 
 ## FAQ
 
