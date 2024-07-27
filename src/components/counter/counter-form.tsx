@@ -73,8 +73,9 @@ export default function CounterForm({ team, type }: CounterFormProps) {
     text = `, ${text} agora o time tem ${counter + qty} ${pontos}`;
 
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "pt-BR";
 
-    utterance.voice = window.speechSynthesis.getVoices()[0];
+    utterance.voice = window.speechSynthesis.getVoices()[1];
     return window.speechSynthesis.speak(utterance);
   }
 
