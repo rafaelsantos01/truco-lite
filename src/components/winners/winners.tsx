@@ -44,9 +44,9 @@ export default function WinnersForm({ team }: WinnersFormProps) {
       </div>
 
       <div className="flex space-x-6">
-        {/* <Button className="w-36 h-12" variant={"secondary"}>
+        <Button className="w-36 h-12" variant={"secondary"}>
           <Link href="/party">Jogar Novamente</Link>
-        </Button> */}
+        </Button>
         <Button
           className="w-36 h-12"
           variant={"secondary"}

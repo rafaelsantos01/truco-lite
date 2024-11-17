@@ -19,17 +19,14 @@ export default function CounterForm({ team, type }: CounterFormProps) {
   }
 
   async function updateCounter(points: number) {
-    setCounter((prevCounter) => {
-      const newCounter = prevCounter + points;
+    const newCounter = counter + points;
 
-      if (newCounter >= 12 && prevCounter < 12) {
-        // Garantimos que a condição de vitória só será chamada uma vez
-        handleWinCondition();
-        window.speechSynthesis.cancel();
-      }
+    if (newCounter >= 12 && counter < 12) {
+      await handleWinCondition();
+      window.speechSynthesis.cancel();
+    }
 
-      return newCounter;
-    });
+    setCounter(newCounter);
   }
 
 
@@ -45,7 +42,10 @@ export default function CounterForm({ team, type }: CounterFormProps) {
           type,
           JSON.stringify({ ...parsedTeam, score: newScore })
         );
-        return router.push(`/winners?team=${parsedTeam.name}`);
+
+        setTimeout(() => {
+          return router.push(`/winners?team=${parsedTeam.name}`);
+        }, 500);
       }
     } catch (error) {
       toast({
