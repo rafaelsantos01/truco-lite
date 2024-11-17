@@ -21,18 +21,32 @@ export default function CounterForm({ team, type }: CounterFormProps) {
   async function updateCounter(points: number) {
     setCounter((prevCounter) => {
       const newCounter = prevCounter + points;
-      if (newCounter >= 12) {
+
+      if (newCounter >= 12 && prevCounter < 12) {
+        // Garantimos que a condição de vitória só será chamada uma vez
         handleWinCondition();
         window.speechSynthesis.cancel();
       }
+
       return newCounter;
     });
   }
 
+
   async function handleWinCondition() {
     try {
-      await UpdateScore(type);
-      router.push(`/winners?team=${team}`);
+      const team = localStorage.getItem(type);
+
+      if (team) {
+        const parsedTeam = JSON.parse(team);
+        const newScore = parsedTeam.score + 1;
+
+        localStorage.setItem(
+          type,
+          JSON.stringify({ ...parsedTeam, score: newScore })
+        );
+        return router.push(`/winners?team=${parsedTeam.name}`);
+      }
     } catch (error) {
       toast({
         title: "Erro",

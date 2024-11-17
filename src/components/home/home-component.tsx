@@ -16,11 +16,13 @@ import { createTeam, type CreateTeam } from "@/schemas/create-team";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Description } from "@radix-ui/react-dialog";
 import { Text } from "../ui/text";
-import createParty from "@/action/create-party";
+import { CookieNames } from "@/types/cookies-name";
+import { useRouter } from "next/navigation";
 
 export default function HomeComponent() {
   const [isDialog, setIsDialog] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -35,7 +37,21 @@ export default function HomeComponent() {
   async function onSubmit() {
     setIsLoaded(true);
     const data = getValues();
-    await createParty(data);
+
+    localStorage.setItem(
+      CookieNames.TEAM_ONE,
+      JSON.stringify({ name: data.teamOne, score: 0, type: "truco.team.one" })
+    )
+
+
+    localStorage.setItem(
+      CookieNames.TEAM_TWO,
+      JSON.stringify({ name: data.teamTwo, score: 0, type: "truco.team.two" })
+    );
+
+    setTimeout(() => {
+      router.push("/party");
+    }, 500);
   }
 
   return (

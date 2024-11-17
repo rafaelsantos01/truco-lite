@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: "Truco Lite",
   description: "Marque pontos fácil e rápido, com histórico de partidas.",
+  manifest: "/manifest.json",
 };
 
 const fontSans = FontSans({

@@ -5,8 +5,9 @@ import CounterForm from "../counter/counter-form";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import Scoreboard from "./scoreboard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import speak from "@/utils/message-six-points";
+import { useRouter } from "next/navigation";
 
 interface CookiesType {
   name: string;
@@ -20,8 +21,13 @@ interface StartFormProps {
 }
 
 export default function StartForm({ teamOne, teamTwo }: StartFormProps) {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+
   async function cancelParty() {
-    await CancelPartyRedirect();
+    await localStorage.clear();
+    return router.push("/");
   }
 
   return (
